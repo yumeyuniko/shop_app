@@ -1,6 +1,6 @@
-require_relative 'boot'
+require_relative "boot"
 
-require 'rails/all'
+require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -15,5 +15,13 @@ module ShopApp
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    config.i18n.default_locale = :ja
+    config.to_prepare do
+      Devise::SessionsController.layout "signin"
+      Devise::RegistrationsController.layout "signin"
+      Devise::ConfirmationsController.layout "signin"
+      Devise::UnlocksController.layout "signin"
+      Devise::PasswordsController.layout "signin"
+    end
   end
 end
