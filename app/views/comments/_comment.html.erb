@@ -1,4 +1,6 @@
+<p><%= simple_format(comment.comment) %></p>
+<span><%= comment.created_at.to_s(:datetime_jp) %></span>
+<%= comment.user.nickname %>
 
-  <p><%= simple_format(comment.comment) %></p>
-    <span><%= comment.created_at.to_s(:datetime_jp) %></span>
 
+<%= link_to '削除',item_comment_path(item_id: comment.item, id: comment), method: :delete %>

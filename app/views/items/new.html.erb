@@ -1,16 +1,4 @@
-
-
-<% if flash[:error_messages] %>
-  <div class="alert alert-danger">
-    <ul>
-      <% flash[:error_messages].each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-    </ul>
-  </div>
-<% end %>
-
-
+<%= render 'shared/error_messages' %>
 <h1>商品出品ページ</h1><div class="items-sell-contents">
   <header class="items-sell-header">
   </header>

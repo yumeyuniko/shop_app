@@ -25,6 +25,7 @@ class ItemsController < ApplicationController
 
   def show
     @comment = Comment.new(item_id: @item.id)
+    @comments = @item.comments
   end
 
   def edit
@@ -32,7 +33,15 @@ class ItemsController < ApplicationController
 
   def update
     @item.update(item_params)
-    redirect_to @item
+    if @item.save
+      flash[:notice] = "「#{@item.name}」の商品を変更しました」"
+      redirect_to @item
+    else
+      redirect_to edit_item_path, flash: {
+        item: @item,
+        error_messages: @item.errors.full_messages
+      }
+    end
   end
 
   def destroy

@@ -1,6 +1,7 @@
 <% if flash[:notice] %>
   <div class="alert alert-primary"><%= flash[:notice] %></div>
 <% end %>
+
     <div class="item-explain-box">
       <span><%= simple_format(@item.explanation) %></span>
     </div>
@@ -22,17 +23,19 @@
       </tbody>
     </table>
 
-    <p>コメント一覧</p>
-    <%= render @item.comments %>
 
+
+    <p>コメント一覧</p>
+    <%= render partial: 'comments/comment', collection: @comments %>
     <%= render 'comments/form', comment: @comment %>
     
+
+
     <div class="option">
       <div class="favorite-btn">
         <span>お気に入り 0</span>
       </div>
       <div class="report-btn">
-      
         <span>不適切な商品の通報</span>
       </div>
     </div>

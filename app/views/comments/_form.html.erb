@@ -1,6 +1,8 @@
+<%= render 'shared/error_messages' %>
+
 <div class="p-comment__formBox">
   <p class="p-comment__formTitle">コメント記入</p>
-  <%= form_with(model: [@item, comment], local: true) do |f| %>
+  <%= form_with(model: comment, url: item_comments_path(item_id: @item), local: true) do |f| %>
     <%= f.hidden_field :item_id %>
     <div class="form-group">
       <%= f.label :comment, 'コメント' %>
